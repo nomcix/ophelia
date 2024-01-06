@@ -197,7 +197,7 @@ internal class AffirmationService : IAffirmationService
     {
         try
         {
-            var content = await GetChatCompletionResponse(prompt, 1.2).ConfigureAwait(false);
+            var content = await GetChatCompletionResponse(prompt, 1.4).ConfigureAwait(false);
             
             GeneratedAffirmation? generatedAffirmation;
             

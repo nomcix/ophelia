@@ -130,3 +130,6 @@ ScaffoldingReadMe.txt
 
 #ConnectionStrings
 appsettings.*
+
+.DS_Store
+.idea

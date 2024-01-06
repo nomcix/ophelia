@@ -63,7 +63,7 @@ namespace Ophelia.Services.Flows
 
                     var hydratedFlow = new HydratedFlow
                     {
-                        Flow_Id = flow.Flow_Id,
+                        Id = flow.id,
                         Title = flow.Title,
                         Category = flow.Category,
                         System = flow.System,
