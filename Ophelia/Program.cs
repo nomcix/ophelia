@@ -7,15 +7,17 @@ using Ophelia.Services.Affirmations;
 using Ophelia.Services.Aws;
 using Ophelia.Services.Flows;
 using Ophelia.Services.OpenAI;
-
+using Serilog;
+using Serilog.Formatting.Compact;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddLogging(loggingBuilder =>
-{
-    loggingBuilder.AddConsole();
-    loggingBuilder.AddDebug();
-});
+Log.Logger = new LoggerConfiguration()
+    .Enrich.FromLogContext()
+    .WriteTo.Console(new RenderedCompactJsonFormatter())
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 
 // Add services to the container.

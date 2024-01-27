@@ -118,9 +118,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# JetBrains Rider
-.idea/
-*.sln.iml
 
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
@@ -131,5 +128,3 @@ ScaffoldingReadMe.txt
 #ConnectionStrings
 appsettings.*
 
-.DS_Store
-.idea
