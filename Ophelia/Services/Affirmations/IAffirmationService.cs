@@ -14,6 +14,8 @@ public interface IAffirmationService
     Task<Affirmation> GetAffirmationById(string id);
 
     Task<List<UserAffirmation>> GetAffirmationsByUser(string userId);
+
+    Task<Affirmation> GetDailyAffirmation();
     
     Task<List<Affirmation>> PostGenerateAffirmations(string prompt, bool generateTts);
     

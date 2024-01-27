@@ -100,6 +100,38 @@ internal class AffirmationService : IAffirmationService
         }
     }
 
+    public async Task<Affirmation> GetDailyAffirmation()
+    {
+        try
+        {
+            var affirmations = await _repository.GetAllAffirmations().ConfigureAwait(false);
+
+            var filteredAffirmations = affirmations
+                .Where(x => new[] { "general", "motivation", "mindfulness", "gratitude" }.Contains(x.category))
+                .ToList();
+
+            if (!filteredAffirmations.Any())
+            {
+                throw new Exception("No affirmations available in the specified categories.");
+            }
+
+            var today = DateTime.Today;
+            var seed = today.Year * 10000 + today.Month * 100 + today.Day; // YYYYMMDD format
+
+            var random = new Random(seed);
+            var randomIndex = random.Next(filteredAffirmations.Count);
+
+            var dailyAffirmation = filteredAffirmations[randomIndex];
+
+            return dailyAffirmation;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"Error occurred getting daily affirmation");
+            throw;
+        }
+    }
+    
     public async Task PostAddUserAffirmation(string userId, string affirmationText, string category)
     {
         try
