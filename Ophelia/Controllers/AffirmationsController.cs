@@ -91,6 +91,20 @@ public class AffirmationsController : ControllerBase
             return StatusCode(500, ErrorMessage);
         }
     }
+
+    [HttpGet("dailyAffirmation")]
+    public async Task<ActionResult> GetDailyAffirmation()
+    {
+        try
+        {
+            var dailyAffirmation = await _service.GetDailyAffirmation().ConfigureAwait(false);
+            return Ok(dailyAffirmation);
+        }
+        catch (Exception)
+        {
+            return StatusCode(500, ErrorMessage);
+        }
+    }
     
     [HttpPost]
     public async Task<IActionResult> PostAddAffirmation(PostCreateAffirmationRequest request)
